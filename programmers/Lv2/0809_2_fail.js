@@ -1,3 +1,5 @@
+//JustDistance https://school.programmers.co.kr/learn/courses/30/lessons/81302 fail
+
 function solution(places) {
   let answer = [];
   for (let place of places) {

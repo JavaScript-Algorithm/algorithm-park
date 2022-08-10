@@ -1,4 +1,5 @@
 //Parentheses conversion https://school.programmers.co.kr/learn/courses/30/lessons/60058 Complete
+
 function solution(p) {
   if (!p) return "";
 

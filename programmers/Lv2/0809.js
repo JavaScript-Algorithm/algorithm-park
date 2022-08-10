@@ -1,4 +1,5 @@
 //newsClustering https://school.programmers.co.kr/learn/courses/30/lessons/17677 Complete
+
 function solution(str1, str2) {
   const result = clustering(
     clear(str1.toUpperCase()),

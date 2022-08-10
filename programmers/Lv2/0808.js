@@ -1,4 +1,5 @@
 //menu renewal https://school.programmers.co.kr/learn/courses/30/lessons/72411 Complete
+
 function solution(orders, course) {
   var answer = [];
   for (let num of course) {
