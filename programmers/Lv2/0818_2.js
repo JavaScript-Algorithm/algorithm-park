@@ -1,20 +1,26 @@
 function solution(bridge_length, weight, truck_weights) {
-  const wait_trucks = [...truck_weights].sort((a, b) => b - a);
-  const wait_times = new Array(wait_trucks.length).fill(0);
-  const bridge = { weight, trucks: [] };
-  const get = () =>
-    bridge.trucks.length === 0 ? 0 : bridge.trucks.reduce((a, b) => a + b, 0);
-  let time = bridge_length;
+  const truck = truck_weights.map((t) => [t, bridge_length - 1]);
 
-  while (wait_trucks.length !== 0) {
-    const truck = wait_trucks.shift();
-    if (get() > truck) {
-      bridge.trucks.push(truck);
-    } else {
-      bridge.trucks.pop();
-      time++;
+  const bridge = [];
+  const sum = (arr) => (arr.length ? arr.reduce((a, b) => a + b[0], 0) : 0);
+  // arr.length ? arr.reduce((a, b) =>{ return a[0] + b[0]}, 0) : 0;
+  let tick = 0;
+  while (truck.length || bridge.length) {
+    tick++;
+    for (const t = 0; t < bridge.length; t++)
+      if (!t[1]--) {
+        bridge.shift();
+        t--;
+      }
+
+    if (truck.length) {
+      const t = truck.shift();
+      if (sum(bridge) + t[0] <= weight) bridge.push(t);
+      else truck.unshift(t);
     }
+    console.log(bridge, tick, sum(bridge));
   }
-  console.log(time);
+  console.log(tick);
+
   return -1;
 }
