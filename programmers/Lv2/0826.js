@@ -1,19 +1,8 @@
-//cache https://school.programmers.co.kr/learn/courses/30/lessons/17680 Complete
+function solution(n, wires) {
+  var answer = -1;
+  const map = Array.from(Array(n + 1), (_, i) => new Array());
+  for (const wire of wires) map[wire[0]].push(wire[1]);
 
-function solution(cacheSize, cities) {
-  let answer = 0;
-  const cache = new Array(0);
-  for (const city of cities) insert(city.toUpperCase());
-  function insert(data) {
-    if (cacheSize > 0 && cache.includes(data)) {
-      cache.splice(cache.indexOf(data), 1);
-      cache.unshift(data);
-      answer++;
-      return;
-    }
-    if (cache.length >= cacheSize) cache.pop();
-    cache.unshift(data);
-    answer += 5;
-  }
+  console.log(map);
   return answer;
 }
