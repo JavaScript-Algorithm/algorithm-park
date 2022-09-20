@@ -1,11 +1,12 @@
 function solution(maps) {
-  var answer = 0;
   const dis = [
     [1, 0],
     [0, 1],
     [-1, 0],
     [0, -1],
   ];
+  const row = maps.length - 1;
+  const col = maps[0].length - 1;
   const queue = [[0, 0, 1]];
   while (queue.length !== 0) {
     const [x, y, l] = queue.shift();
@@ -18,5 +19,5 @@ function solution(maps) {
       }
     }
   }
-  return maps[4][4] === 1 ? -1 : maps[4][4];
+  return maps[row][col] === 1 ? -1 : maps[row][col];
 }
